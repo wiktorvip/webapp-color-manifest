@@ -6,7 +6,7 @@ metadata:
     app: webapp-color
   name: webapp-color
 spec:
-  replicas: 3
+  replicas: 4
   selector:
     matchLabels:
       app: webapp-color
@@ -18,7 +18,7 @@ spec:
         app: webapp-color
     spec:
       containers:
-      - image:  wiktorvip/webapp-color:latest
+      - image:  wiktorvip/webapp-color:red
         name: webapp-color
         resources: {}
 status: {}
@@ -28,11 +28,11 @@ kind: Service
 metadata:
   name: lb-service-webapp-color
   labels:
-    app: lb-service
+    app: lb-service-webapp-color
 spec:
   type: LoadBalancer
   ports:
-  - port: 80
-    targetPort: 5000
+  - port: 9009
+    targetPort: 9009
   selector:
     app: webapp-color
