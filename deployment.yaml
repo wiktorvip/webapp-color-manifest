@@ -3,36 +3,36 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: webapp-color
-  name: webapp-color
+    app: webapp
+  name: webapp
 spec:
   replicas: 4
   selector:
     matchLabels:
-      app: webapp-color
+      app: webapp
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: webapp-color
+        app: webapp
     spec:
       containers:
       - image:  wiktorvip/webapp-color:8
-        name: webapp-color
+        name: webapp
         resources: {}
 status: {}
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: lb-service-webapp-color
+  name: lb-service-webapp
   labels:
-    app: lb-service-webapp-color
+    app: lb-service-webapp
 spec:
   type: LoadBalancer
   ports:
   - port: 9009
     targetPort: 9009
   selector:
-    app: webapp-color
+    app: webapp
