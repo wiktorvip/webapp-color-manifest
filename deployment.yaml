@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: webapp-color
+  name: webapp-color
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: webapp-color
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: webapp-color
+    spec:
+      containers:
+      - image:  wiktorvip/webapp-color:latest
+        name: webapp-color
+        resources: {}
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: lb-service-webapp-color
+  labels:
+    app: lb-service
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 5000
+  selector:
+    app: webapp-color
