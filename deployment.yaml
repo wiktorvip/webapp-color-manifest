@@ -18,7 +18,7 @@ spec:
         app: webapp
     spec:
       containers:
-      - image:  wiktorvip/webapp-color:8
+      - image:  wiktorvip/webapp-color:red
         name: webapp
         resources: {}
 status: {}
