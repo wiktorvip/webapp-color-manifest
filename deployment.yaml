@@ -32,7 +32,7 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-  - port: 9009
+  - port: 80
     targetPort: 9009
   selector:
     app: webapp
